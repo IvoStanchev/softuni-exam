@@ -1,0 +1,15 @@
+/*  color: burlywood;
+        font-size: large;
+        font-weight: bolder;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+          'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+
+/* .navbar {
+  position: relative;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,700;1,100;1,200;1,300;1,400;1,600&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+}
