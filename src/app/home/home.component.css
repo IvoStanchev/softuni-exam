@@ -1,0 +1,76 @@
+.carousel-inner > .carousel-item > img {
+  /* width: 640px; */
+  height: 700px;
+  margin: 0 auto;
+}
+
+.carousel-inner > .carousel-item {
+  transition: transform 1s ease, opacity 0.5s ease-out;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-caption h1 {
+  font-size: 400%;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 20px #000;
+}
+
+.carousel-caption h3 {
+  font-size: 200%;
+  font-weight: 500;
+  text-shadow: 1px 1px 10px #000;
+  padding-bottom: 1rem;
+}
+
+/* * Jumbotron */
+
+.jumbotron {
+  padding: 1rem;
+  border-radius: 0;
+}
+
+.jumbotron button {
+  border-width: 2px;
+}
+
+.padding {
+  padding-bottom: 2rem;
+}
+
+/* *Welcome sign for choosing products */
+.welcome {
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.welcome hr {
+  border-top: 2px solid #b4b4b4;
+  width: 95%;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+/* * Cards */
+
+.card a {
+  border-width: 2px;
+}
+
+/* * Two Coloumn */
+
+.hr-coloumn {
+  border-top: 2px solid #b4b4b4;
+  width: 55%;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+#image {
+  padding-top: 2rem;
+}
