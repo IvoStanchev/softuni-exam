@@ -6,7 +6,21 @@ import { Coffee } from './coffee.model';
 })
 export class StoreService {
   constructor() {}
+  // * Vars
+  addProductMode = false;
+  loggedIn = false;
 
+  // * Fetch the current coffee stock
+  getCoffee() {
+    return this.coffee.slice();
+  }
+
+  // * Add a new coffee
+  addCoffee(coffee: Coffee) {
+    this.coffee.push(coffee);
+  }
+
+  // ? Dummy data
   private coffee: Coffee[] = [
     new Coffee(
       'BALI: Blue Moon',

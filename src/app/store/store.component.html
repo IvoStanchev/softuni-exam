@@ -1,148 +1,95 @@
-<div class="container">
+<div *ngIf="!this.storeService.addProductMode" class="cards container padding">
   <h1 class="text-center">Our Products</h1>
   <hr />
+  <app-store-list class="row padding"></app-store-list>
 </div>
 
-<div class="cards container padding">
-  <div class="row padding">
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829069.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Strong blend, deep roast. 100% Arabica imported from Etiopia. If you
-            want that strong coffee smell this one is for you.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
-        </div>
-      </div>
-    </div>
-    <!-- ? Product -->
+<div *ngIf="this.storeService.addProductMode" class="text-center container">
+  <h1 class="text-center">Add Products</h1>
+  <hr />
+  <form [formGroup]="coffeeForm" (ngSubmit)="onSubmit()">
+    <!-- ? Buttons -->
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="submit" class="btn btn-dark m-2">Save</button> |
+        <button type="button" class="btn btn-danger m-2">Cancel</button>
 
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829072.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Specialty</h4>
-          <p class="card-text">
-            Light blend, light roast. 100% Arabica imported from South America.
-            Want to drink coffee all day.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
-        </div>
-      </div>
-    </div>
-    <!-- ? Product -->
+        <!-- ? Name -->
 
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829083.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Medium blend, light roast. 100% Arabica imported from Japan. You
-            need to know your coffee game for this one.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
+        <div class="form-group center">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            class="form-control"
+            formControlName="name"
+          />
         </div>
-      </div>
-    </div>
-    <!-- ? Product -->
 
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829083.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Medium blend, light roast. 100% Arabica imported from Japan. You
-            need to know your coffee game for this one.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
-        </div>
-      </div>
-    </div>
-    <!-- ? Product -->
+        <!-- ? Description -->
 
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829083.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Medium blend, light roast. 100% Arabica imported from Japan. You
-            need to know your coffee game for this one.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            formControlName="description"
+            type="text"
+            name="description"
+            id="description"
+            class="form-control"
+            rows="1"
+            maxlength="40"
+          ></textarea>
         </div>
-      </div>
-    </div>
-    <!-- ? Product -->
 
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829083.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Medium blend, light roast. 100% Arabica imported from Japan. You
-            need to know your coffee game for this one.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
-        </div>
-      </div>
-    </div>
-    <!-- ? Product -->
+        <!-- ? Image path -->
 
-    <!-- ? Product -->
-    <div class="padding col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829083.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body text-center">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Medium blend, light roast. 100% Arabica imported from Japan. You
-            need to know your coffee game for this one.
-          </p>
-          <a class="btn btn-outline-secondary">Buy now</a>
+        <div class="form-group">
+          <label for="imagePath">Image URL</label>
+          <input
+            type="text"
+            name="imagePath"
+            id="imagePath"
+            class="form-control"
+            formControlName="imagePath"
+            #imagePath
+          />
+        </div>
+
+        <!-- ? Weight and Roast type -->
+        <div class="row">
+          <div class="form-group col-sm-12">
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="weight">Weight</label>
+                <input
+                  type="number"
+                  name="weight"
+                  class="form-control"
+                  formControlName="weight"
+                  id="weight"
+                />
+              </div>
+              <div class="col-sm-6">
+                <label for="roast">Choose roast type</label>
+                <select
+                  formControlName="roast"
+                  id="roast"
+                  class="form-control"
+                  name="roast"
+                  id="roast"
+                >
+                  <option selected>Choose...</option>
+                  <option>Dark</option>
+                  <option>Light</option>
+                  <option>Medium</option>
+                  <option>Medium-dark</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- ? Product -->
-  </div>
+  </form>
 </div>

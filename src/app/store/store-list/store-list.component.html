@@ -1,19 +1,5 @@
-<!-- ? Product -->
-<div class="padding col-md-4">
-  <div class="card">
-    <img
-      src="../../assets/products/pexels-cottonbro-4829069.jpg"
-      alt="Responsive Image"
-      class="card-img-top"
-    />
-    <div class="card-body text-center">
-      <h4 class="card-title">Sibaristica</h4>
-      <p class="card-text">
-        Strong blend, deep roast. 100% Arabica imported from Etiopia. If you
-        want that strong coffee smell this one is for you.
-      </p>
-      <a class="btn btn-outline-secondary">Buy now</a>
-    </div>
-  </div>
-</div>
-<!-- ? Product -->
+<app-store-item
+  class="col-md-4 padding"
+  *ngFor="let coffeeEl of coffee; let i = index"
+  [coffee]="coffeeEl"
+></app-store-item>

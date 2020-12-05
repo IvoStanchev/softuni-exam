@@ -1,19 +1,36 @@
 <!-- ? Product -->
-<div class="padding col-md-4">
-  <div class="card">
-    <img
-      src="../../assets/products/pexels-cottonbro-4829069.jpg"
-      alt="Responsive Image"
-      class="card-img-top"
-    />
-    <div class="card-body text-center">
-      <h4 class="card-title">Sibaristica</h4>
-      <p class="card-text">
-        Strong blend, deep roast. 100% Arabica imported from Etiopia. If you
-        want that strong coffee smell this one is for you.
-      </p>
-      <a class="btn btn-outline-secondary">Buy now</a>
-    </div>
+<div class="card">
+  <img
+    [src]="coffee.imagePath"
+    alt="Responsive Image"
+    height="350"
+    class="card-img-top"
+  />
+  <div class="card-body text-center">
+    <h4
+      class="card-title"
+      style="font-weight: 550; font-size: large; color: #343a40"
+    >
+      {{ coffee.name }}
+    </h4>
+    <p class="card-text">{{ coffee.description }} & {{ coffee.roast }}</p>
+
+    <p class="small">
+      <span style="font-weight: 550">Weight:</span> {{ coffee.weight }}gr
+    </p>
+    <p class="small">
+      <span style="font-weight: 550">Delivered:</span> {{ coffee.date | date }}
+    </p>
+    <a *ngIf="!this.storeService.loggedIn" class="btn btn-secondary m-2"
+      >Order now</a
+    >
+    <a *ngIf="!this.storeService.loggedIn" class="btn btn-dark">Details</a>
+    <a *ngIf="this.storeService.loggedIn" class="btn btn-dark m-2"
+      >Edit Product
+    </a>
+    <a *ngIf="this.storeService.loggedIn" class="btn btn-danger"
+      >Delete Product</a
+    >
   </div>
 </div>
 <!-- ? Product -->

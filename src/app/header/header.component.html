@@ -31,17 +31,27 @@
       </ul>
 
       <ul class="navbar-nav">
-        <li class="nav-item ml-auto">
-          <a class="nav-link">Add Product</a>
+        <li *ngIf="this.storeService.loggedIn == true" class="nav-item ml-auto">
+          <a (click)="onAdd()" style="cursor: pointer" class="nav-link"
+            >Add Product</a
+          >
         </li>
         <li class="nav-item ml-auto">
+          <a *ngIf="this.storeService.loggedIn == false" class="nav-link"
+            >Register</a
+          >
+        </li>
+        <li *ngIf="this.storeService.loggedIn == true" class="nav-item ml-auto">
           <a class="nav-link">Profile</a>
         </li>
-        <li class="nav-item ml-auto">
-          <a class="nav-link">Login</a>
+        <li
+          *ngIf="this.storeService.loggedIn == false"
+          class="nav-item ml-auto"
+        >
+          <a (click)="logIn()" class="nav-link">Login</a>
         </li>
-        <li class="nav-item ml-auto">
-          <a class="nav-link">Logout</a>
+        <li *ngIf="this.storeService.loggedIn == true" class="nav-item ml-auto">
+          <a (click)="logOut()" class="nav-link">Logout</a>
         </li>
       </ul>
     </div>
