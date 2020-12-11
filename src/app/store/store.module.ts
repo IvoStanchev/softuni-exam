@@ -6,9 +6,17 @@ import { StoreRoutingModule } from './store-router.module';
 import { StoreListComponent } from './store-list/store-list.component';
 import { StoreItemComponent } from './store-list/store-item/store-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreDetailsComponent } from './store-details/store-details.component';
+import { StoreEditComponent } from './store-edit/store-edit.component';
 
 @NgModule({
-  declarations: [StoreComponent, StoreListComponent, StoreItemComponent],
+  declarations: [
+    StoreComponent,
+    StoreListComponent,
+    StoreItemComponent,
+    StoreDetailsComponent,
+    StoreEditComponent,
+  ],
   imports: [
     CommonModule,
     StoreRoutingModule,

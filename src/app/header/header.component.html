@@ -20,7 +20,12 @@
           <a class="nav-link" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="store">Store</a>
+          <a
+            class="nav-link"
+            (click)="this.storeService.detailMode = false"
+            routerLink="store"
+            >Store</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="about">About</a>

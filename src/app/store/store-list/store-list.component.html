@@ -2,4 +2,15 @@
   class="col-md-4 padding"
   *ngFor="let coffeeEl of coffee; let i = index"
   [coffee]="coffeeEl"
+  [index]="i"
 ></app-store-item>
+
+<div *ngIf="coffee.length == 0">
+  <p
+    class="display-4 text-center"
+    style="padding-top: 6rem; padding-bottom: 6rem"
+  >
+    Unfortunately we are out of stock. Please check back later or give us a call
+    for more information.
+  </p>
+</div>

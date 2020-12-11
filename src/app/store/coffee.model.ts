@@ -1,5 +1,6 @@
 export class Coffee {
   public name: string;
+  public price: number;
   public description: string;
   public roast: string;
   public imagePath: string;
@@ -8,6 +9,7 @@ export class Coffee {
 
   constructor(
     name: string,
+    price: number,
     description: string,
     roast: string,
     imagePath: string,
@@ -15,6 +17,7 @@ export class Coffee {
     date: Date
   ) {
     this.name = name;
+    this.price = price;
     this.description = description;
     this.roast = roast;
     this.imagePath = imagePath;

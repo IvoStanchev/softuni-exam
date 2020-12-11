@@ -49,7 +49,7 @@
           We are busy but we can always spare some time to chat. Come and say
           Hi!
         </h3>
-        <button routerlink="contact" type="button" class="btn btn-dark btn-lg">
+        <button routerLink="contact" type="button" class="btn btn-dark btn-lg">
           Contact Page
         </button>
       </div>
@@ -87,11 +87,7 @@
       roasted in-house using the most advanced mothods ensuring the best
       possible flavour and taste.
     </p>
-    <a><button class="btn btn-outline-secondary btn-lg">Buy Beans</button></a>
   </div>
-  <!-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-  
-  </div> -->
 </div>
 <!-- ? Product cards-->
 <div class="container padding">
@@ -105,54 +101,24 @@
 
 <div class="container padding">
   <div class="row padding">
-    <div class="col-md-4">
+    <div *ngFor="let coffeeEl of coffee" class="col-md-4">
       <div class="card">
         <img
-          src="../../assets/products/pexels-cottonbro-4829069.jpg"
+          src="{{ coffeeEl.imagePath }}"
           alt="Responsive Image"
           class="card-img-top"
         />
         <div class="card-body">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Strong blend, deep roast. 100% Arabica imported from Etiopia. If you
-            want that strong coffee smell this one is for you.
+          <h4
+            class="card-title lead font-weight-bold"
+            style="font-size: larger"
+          >
+            {{ coffeeEl.name }}
+          </h4>
+          <p class="card-text font-smaller">
+            {{ coffeeEl.description | slice: 0:100 }}...
           </p>
-          <a class="btn btn-outline-secondary">Visit Store</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829072.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h4 class="card-title">Specialty</h4>
-          <p class="card-text">
-            Light blend, light roast. 100% Arabica imported from South America.
-            Want to drink coffee all day.
-          </p>
-          <a class="btn btn-outline-secondary">Visit Store</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img
-          src="../../assets/products/pexels-cottonbro-4829083.jpg"
-          alt="Responsive Image"
-          class="card-img-top"
-        />
-        <div class="card-body">
-          <h4 class="card-title">Sibaristica</h4>
-          <p class="card-text">
-            Medium blend, light roast. 100% Arabica imported from Japan. You
-            need to know your coffee game for this one.
-          </p>
-          <a class="btn btn-outline-secondary">Visit Store</a>
+          <a class="btn btn-dark" (click)="toStore()">Visit Store</a>
         </div>
       </div>
     </div>
@@ -173,7 +139,7 @@
         If you are uncertain, we provide free tasting samples for all of our
         customers.
       </p>
-      <a class="btn btn-outline-dark">Learn More</a>
+      <a class="btn btn-outline-dark" routerLink="about">Learn More</a>
     </div>
 
     <div id="image" class="col-lg-6">

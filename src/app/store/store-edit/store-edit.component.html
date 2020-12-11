@@ -1,39 +1,10 @@
-<div *ngIf="!this.storeService.addProductMode" class="cards container padding">
-  <div
-    *ngIf="
-      this.storeService.detailMode == false &&
-      this.storeService.editMode == false
-    "
-  >
-    <h1 class="text-center">Our Products</h1>
-    <hr />
-    <app-store-list class="row padding"></app-store-list>
-  </div>
-
-  <div *ngIf="this.storeService.detailMode == true">
-    <h1 class="text-center">Product Details</h1>
-    <hr />
-    <router-outlet class="row padding"></router-outlet>
-  </div>
-
-  <div *ngIf="this.storeService.editMode == true">
-    <h1 class="text-center">Edit Product</h1>
-    <hr />
-    <router-outlet class="row padding"></router-outlet>
-  </div>
-</div>
-
-<div *ngIf="this.storeService.addProductMode" class="text-center container">
-  <h1 class="text-center">Add Products</h1>
-  <hr />
-  <form [formGroup]="coffeeForm" (ngSubmit)="onSubmit()">
+<div class="text-center container">
+  <form [formGroup]="editCoffeForm" (ngSubmit)="onSubmit()">
     <!-- ? Buttons -->
     <div class="row">
       <div class="col-sm-12">
         <button type="submit" class="btn btn-dark m-2">Save</button> |
-        <button (click)="onCancel()" type="button" class="btn btn-danger m-2">
-          Cancel
-        </button>
+        <button type="button" class="btn btn-danger m-2">Cancel</button>
 
         <!-- ? Name -->
 
@@ -58,7 +29,7 @@
             name="description"
             id="description"
             class="form-control"
-            rows="1"
+            rows="4"
             maxlength="40"
           ></textarea>
         </div>
@@ -125,12 +96,11 @@
           <div class="row justify-content-center">
             <div class="col-xs-12 justify-content-center">
               <img
-                *ngIf="imagePath.value != ''"
                 [src]="imagePath.value"
                 class="img-responsive justify-content-center"
-                alt="Responsive Img"
-                height="550px"
-                width="600px"
+                alt=""
+                height="500px"
+                width="500px"
               />
             </div>
           </div>
