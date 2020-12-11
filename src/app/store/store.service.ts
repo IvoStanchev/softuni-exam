@@ -12,10 +12,15 @@ export class StoreService {
   loggedIn = false;
   detailMode = false;
   editMode = false;
+  private coffee: Coffee[] = [];
 
   // * Fetch the current coffee stock
   getCoffee() {
-    return this.coffee;
+    if (this.coffee != null) {
+      return this.coffee;
+    } else {
+      return (this.coffee = []);
+    }
   }
 
   // * Add a new coffee
@@ -35,7 +40,11 @@ export class StoreService {
   // * Set all coffees from the database arr to coffee arr.
 
   setCoffee(coffee: Coffee[]) {
-    this.coffee = coffee;
+    if (this.coffee !== null) {
+      this.coffee = coffee;
+    } else {
+      this.coffee = [];
+    }
   }
 
   //* Update a product
@@ -51,7 +60,6 @@ export class StoreService {
     this.addProductMode = false;
     this.editMode = false;
   }
-  private coffee: Coffee[] = [];
 
   // ? Dummy data
   // private coffee: Coffee[] = [

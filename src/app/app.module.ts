@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],

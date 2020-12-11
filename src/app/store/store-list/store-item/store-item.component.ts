@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Coffee } from '../../coffee.model';
 import { StoreService } from '../../store.service';
 
@@ -11,8 +12,7 @@ import { StoreService } from '../../store.service';
 export class StoreItemComponent implements OnInit {
   constructor(
     public storeService: StoreService,
-    private route: ActivatedRoute,
-    private router: Router
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit(): void {}
@@ -28,7 +28,7 @@ export class StoreItemComponent implements OnInit {
   //* Delete
   onDeleteCoffee() {
     this.storeService.deleteCoffee(this.index);
-    console.log(this.index);
+    this.dataStorageService.storeCoffee();
   }
 
   onDetails() {

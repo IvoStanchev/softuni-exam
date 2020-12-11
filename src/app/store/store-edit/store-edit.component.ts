@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Coffee } from '../coffee.model';
 import { StoreService } from '../store.service';
 
@@ -13,10 +14,11 @@ export class StoreEditComponent implements OnInit {
   constructor(
     private storeService: StoreService,
     private route: ActivatedRoute,
-    private router: Router
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit(): void {
+    this.dataStorageService.fetchCoffee().subscribe();
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
       this.InitForm();
@@ -39,7 +41,6 @@ export class StoreEditComponent implements OnInit {
     roast = coffee.roast;
     imagePath = coffee.imagePath;
     weight = coffee.weight;
-    console.log(roast);
 
     // * Form data
     this.editCoffeForm = new FormGroup({
@@ -64,7 +65,9 @@ export class StoreEditComponent implements OnInit {
 
   onSubmit() {
     this.storeService.updateCoffee(this.id, this.editCoffeForm.value);
+    this.dataStorageService.storeCoffee();
     this.storeService.editMode = false;
+    this.ngOnInit();
     this.onCancel();
   }
 

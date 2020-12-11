@@ -102,11 +102,13 @@
 <div class="container padding">
   <div class="row padding">
     <div *ngFor="let coffeeEl of coffee" class="col-md-4">
-      <div class="card">
+      <div *ngIf="coffee.length > 0" class="card">
         <img
           src="{{ coffeeEl.imagePath }}"
           alt="Responsive Image"
           class="card-img-top"
+          width="300px"
+          height="300px"
         />
         <div class="card-body">
           <h4
@@ -122,6 +124,11 @@
         </div>
       </div>
     </div>
+  </div>
+  <div *ngIf="coffee.length <= 0">
+    <p class="lead font-weight-bold text-center">
+      We are currently out of stock
+    </p>
   </div>
 </div>
 

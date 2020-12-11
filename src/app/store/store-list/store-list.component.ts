@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Coffee } from '../coffee.model';
 import { StoreService } from '../store.service';
 
@@ -7,11 +8,18 @@ import { StoreService } from '../store.service';
   templateUrl: './store-list.component.html',
   styleUrls: ['./store-list.component.css'],
 })
-export class StoreListComponent implements OnInit {
-  constructor(private storeService: StoreService) {}
+export class StoreListComponent implements OnInit, OnChanges {
+  constructor(
+    private storeService: StoreService,
+    public dataStorageService: DataStorageService
+  ) {}
 
   // * Fetch all coffee
   ngOnInit(): void {
+    this.dataStorageService.fetchCoffee().subscribe();
+  }
+  ngOnChanges() {}
+  ngDoCheck(): void {
     this.coffee = this.storeService.getCoffee();
   }
 

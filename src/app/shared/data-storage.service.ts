@@ -8,7 +8,7 @@ import { StoreService } from '../store/store.service';
 export class DataStorageService {
   constructor(private http: HttpClient, private storeService: StoreService) {}
 
-  storeRecipes() {
+  storeCoffee() {
     const coffee = this.storeService.getCoffee();
 
     this.http
@@ -21,14 +21,14 @@ export class DataStorageService {
       });
   }
 
-  fetchRecipes() {
+  fetchCoffee() {
     return this.http
       .get<Coffee[]>(
-        'https://angular-project-maximillan.firebaseio.com/recipes.json'
+        'https://softuni-exam-3cc55-default-rtdb.europe-west1.firebasedatabase.app/products.json'
       )
       .pipe(
-        tap((recipes) => {
-          this.storeService.setCoffee(recipes);
+        tap((coffee) => {
+          this.storeService.setCoffee(coffee);
         })
       );
   }
