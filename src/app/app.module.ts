@@ -7,12 +7,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from './shared/shared.module';
-import { RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
+import { CoreModule } from './core.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    SharedModule,
+    CoreModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { StoreService } from '../store/store.service';
 
 @Component({
@@ -6,22 +8,31 @@ import { StoreService } from '../store/store.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
-  constructor(public storeService: StoreService) {}
+export class HeaderComponent implements OnInit, OnDestroy {
+  constructor(
+    public storeService: StoreService,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  private userSub: Subscription;
 
-  // * Vars
-
-  logIn() {
-    this.storeService.loggedIn = true;
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuth = !!user;
+    });
   }
 
-  logOut() {
-    this.storeService.loggedIn = false;
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 
+  onLogout() {
+    this.authService.logout();
+  }
   onAdd() {
     this.storeService.addProductMode = !this.storeService.addProductMode;
   }
+
+  // * Vars
+  isAuth = false;
 }

@@ -41,22 +41,16 @@
             >Add Product</a
           >
         </li>
-        <li class="nav-item ml-auto">
-          <a *ngIf="this.storeService.loggedIn == false" class="nav-link"
-            >Register</a
+        <li *ngIf="!isAuth" class="nav-item ml-auto">
+          <a routerLink="auth" class="nav-link">Login/SignUp</a>
+        </li>
+        <li *ngIf="isAuth" class="nav-item ml-auto">
+          <a style="cursor: pointer" class="nav-link">Profile</a>
+        </li>
+        <li *ngIf="isAuth" class="nav-item ml-auto">
+          <a (click)="onLogout()" style="cursor: pointer" class="nav-link"
+            >Logout</a
           >
-        </li>
-        <li *ngIf="this.storeService.loggedIn == true" class="nav-item ml-auto">
-          <a class="nav-link">Profile</a>
-        </li>
-        <li
-          *ngIf="this.storeService.loggedIn == false"
-          class="nav-item ml-auto"
-        >
-          <a (click)="logIn()" class="nav-link">Login</a>
-        </li>
-        <li *ngIf="this.storeService.loggedIn == true" class="nav-item ml-auto">
-          <a (click)="logOut()" class="nav-link">Logout</a>
         </li>
       </ul>
     </div>

@@ -1,1 +1,58 @@
-<p>works</p>
+<h1 class="text-center p-2">Login/Register</h1>
+<br />
+<div *ngIf="error" class="alert alert-danger">
+  <p class="text-center">{{ error }}</p>
+</div>
+<div *ngIf="isLoading" style="text-align: center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+<form *ngIf="!isLoading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+  <!-- [formGroup]="coffeeForm"  -->
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <!-- ? Email -->
+
+      <div class="form-group center">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          ngModel
+          required
+          email
+        />
+      </div>
+      <!--  ? Password -->
+      <div class="form-group center">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="form-control"
+          ngModel
+          required
+          minlength="6"
+        />
+      </div>
+
+      <!-- ? Buttons -->
+
+      <button
+        type="submit"
+        class="btn btn-dark m-2"
+        [disabled]="!authForm.valid"
+      >
+        {{ isLoginMode ? "Login" : "Sign Up" }}
+      </button>
+      |
+      <button (click)="onSwitch()" type="button" class="btn btn-dark m-2">
+        Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+      </button>
+      |
+      <button type="button" class="btn btn-danger m-2">Cancel</button>
+    </div>
+  </div>
+</form>
