@@ -12,6 +12,7 @@ import { AuthService } from './auth.service';
 export class AuthInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
+  // ? Attach the user token to any request if a use exists
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return this.authService.user.pipe(
       take(1),

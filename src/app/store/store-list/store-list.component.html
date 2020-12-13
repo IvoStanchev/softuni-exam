@@ -1,3 +1,4 @@
+<!-- ? Iterate over the coffee array -->
 <app-store-item
   class="col-md-4 padding"
   *ngFor="let coffeeEl of coffee; let i = index"
@@ -5,6 +6,7 @@
   [index]="i"
 ></app-store-item>
 
+<!-- ? Out of stock alert-->
 <div *ngIf="coffee.length == 0">
   <p
     class="display-4 text-center"

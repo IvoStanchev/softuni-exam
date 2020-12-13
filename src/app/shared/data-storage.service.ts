@@ -10,7 +10,6 @@ export class DataStorageService {
 
   storeCoffee() {
     const coffee = this.storeService.getCoffee();
-
     this.http
       .put(
         'https://softuni-exam-3cc55-default-rtdb.europe-west1.firebasedatabase.app/products.json',
@@ -22,8 +21,6 @@ export class DataStorageService {
   }
 
   fetchCoffee() {
-    // * Take one value from the observable and unsubscribe.
-
     return this.http
       .get<Coffee[]>(
         'https://softuni-exam-3cc55-default-rtdb.europe-west1.firebasedatabase.app/products.json'

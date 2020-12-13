@@ -17,14 +17,14 @@ export class StoreEditComponent implements OnInit {
     private dataStorageService: DataStorageService
   ) {}
 
-  ngOnInit(): void {
-    this.dataStorageService.fetchCoffee().subscribe();
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-      this.InitForm();
-    });
-  }
+  // * Vars
+  editCoffeForm: FormGroup;
+  coffee: Coffee;
+  isSubmitted = false;
+  editMode = false;
+  id: number;
 
+  // ? Prep form before use
   private InitForm() {
     let name = '';
     let price = 0;
@@ -50,18 +50,18 @@ export class StoreEditComponent implements OnInit {
       roast: new FormControl(roast, Validators.required),
       imagePath: new FormControl(imagePath, Validators.required),
       weight: new FormControl(weight, Validators.required),
+      date: new FormControl(coffee.date),
     });
   }
 
-  // * Vars
-
-  editCoffeForm: FormGroup;
-  coffee: Coffee;
-  isSubmitted = false;
-  editMode = false;
-  id: number;
-
   // * Methods
+  ngOnInit(): void {
+    this.dataStorageService.fetchCoffee().subscribe();
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id'];
+      this.InitForm();
+    });
+  }
 
   onSubmit() {
     this.storeService.updateCoffee(this.id, this.editCoffeForm.value);

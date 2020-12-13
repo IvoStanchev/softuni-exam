@@ -1,8 +1,11 @@
+<!-- ? Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
   <div class="container-fluid">
     <a class="nav-link" class="navbar-brand">
       <img src="../../assets/coffee-mug.png" alt="" srcset="" />
     </a>
+
+    <!-- ? Dropdown responsive button -->
     <button
       class="navbar-toggler"
       type="button"
@@ -14,6 +17,8 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- ? Links -->
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -27,6 +32,7 @@
         </li>
       </ul>
 
+      <!-- ? Auth dependend links -->
       <ul class="navbar-nav">
         <li *ngIf="isAuth" class="nav-item ml-auto">
           <a style="cursor: pointer" class="nav-link"

@@ -12,9 +12,12 @@ import { StoreService } from './store.service';
   styleUrls: ['./store.component.css'],
 })
 export class StoreComponent implements OnInit, OnDestroy, OnChanges {
+  // * Vars
   private userSub: Subscription;
   isAuth = false;
   isAdd = false;
+  coffeeForm: FormGroup;
+  isSubmitted = false;
 
   // * Imported service
   constructor(
@@ -23,6 +26,7 @@ export class StoreComponent implements OnInit, OnDestroy, OnChanges {
     private authService: AuthService
   ) {}
 
+  // * Functions
   ngOnChanges() {
     this.dataStorageService.fetchCoffee().subscribe();
   }
@@ -46,13 +50,6 @@ export class StoreComponent implements OnInit, OnDestroy, OnChanges {
     });
   }
 
-  // * Vars
-
-  coffeeForm: FormGroup;
-
-  isSubmitted = false;
-  // * Methods
-
   onSubmit() {
     this.isSubmitted = true;
     this.storeService.addCoffee(this.coffeeForm.value);
@@ -62,10 +59,12 @@ export class StoreComponent implements OnInit, OnDestroy, OnChanges {
     this.onCancel();
   }
 
+  //* Redirect to store
   onCancel() {
     this.storeService.toStore();
   }
 
+  //* Unsubscribe
   ngOnDestroy() {
     this.userSub.unsubscribe();
   }
