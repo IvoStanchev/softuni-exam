@@ -8,6 +8,7 @@ import { StoreItemComponent } from './store-list/store-item/store-item.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { StoreEditComponent } from './store-edit/store-edit.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { StoreEditComponent } from './store-edit/store-edit.component';
     StoreRoutingModule,
     RouterModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
 })
 export class StoreModule {}

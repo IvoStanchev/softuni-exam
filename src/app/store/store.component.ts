@@ -1,9 +1,9 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { DataStorageService } from '../shared/data-storage.service';
 
-import { Coffee } from './coffee.model';
 import { StoreService } from './store.service';
 
 @Component({
@@ -11,15 +11,29 @@ import { StoreService } from './store.service';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css'],
 })
-export class StoreComponent implements OnInit {
+export class StoreComponent implements OnInit, OnDestroy, OnChanges {
+  private userSub: Subscription;
+  isAuth = false;
+  isAdd = false;
+
   // * Imported service
   constructor(
     public storeService: StoreService,
-    private dataStorageService: DataStorageService
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
+  ngOnChanges() {
     this.dataStorageService.fetchCoffee().subscribe();
+  }
+
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuth = !!user;
+    });
+
+    this.dataStorageService.fetchCoffee().subscribe();
+
     // * Form data
     this.coffeeForm = new FormGroup({
       name: new FormControl(null, Validators.required),
@@ -28,7 +42,7 @@ export class StoreComponent implements OnInit {
       roast: new FormControl(null, Validators.required),
       imagePath: new FormControl(null, Validators.required),
       weight: new FormControl(null, Validators.required),
-      date: new FormControl(new Date()),
+      date: new FormControl(Date()),
     });
   }
 
@@ -44,11 +58,15 @@ export class StoreComponent implements OnInit {
     this.storeService.addCoffee(this.coffeeForm.value);
     this.dataStorageService.storeCoffee();
     this.storeService.addProductMode = false;
-    this.ngOnInit();
+    this.coffeeForm.reset();
     this.onCancel();
   }
 
   onCancel() {
     this.storeService.toStore();
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }

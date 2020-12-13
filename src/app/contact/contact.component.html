@@ -2,33 +2,43 @@
   <h1 class="display-2">Contact Us!</h1>
 </div>
 
+<!-- ? Contact form  -->
 <form class="text-center w-50">
+  <!-- ? Name -->
   <div class="form-group">
-    <label for="exampleFormControlInput1">Your name</label>
-    <input
-      type="email"
-      class="form-control"
-      id="exampleFormControlInput1"
-      placeholder="John"
-    />
+    <label for="name">Your name</label>
+    <input type="text" class="form-control" id="name" placeholder="John" />
   </div>
+
+  <!-- ? Email -->
   <div class="form-group">
-    <label for="exampleFormControlInput1">Email address</label>
+    <label for="email">Email address</label>
     <input
       type="email"
       class="form-control"
-      id="exampleFormControlInput1"
+      id="email"
       placeholder="name@example.com"
     />
   </div>
 
+  <!-- ? Text -->
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <label for="text">Message</label>
     <textarea
       class="form-control"
-      id="exampleFormControlTextarea1"
+      id="text"
       rows="3"
       placeholder="Coffee is the best ..."
     ></textarea>
   </div>
+
+  <button class="btn btn-dark">Send</button>
 </form>
+
+<div class="container text-center">
+  <h1 class="display-4">Visit our store</h1>
+</div>
+<!-- ? Demo maps -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>

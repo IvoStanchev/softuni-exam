@@ -18,7 +18,9 @@ export class StoreListComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.dataStorageService.fetchCoffee().subscribe();
   }
-  ngOnChanges() {}
+  ngOnChanges() {
+    this.dataStorageService.fetchCoffee().subscribe();
+  }
   ngDoCheck(): void {
     this.coffee = this.storeService.getCoffee();
   }

@@ -1,3 +1,6 @@
 form {
   transform: translateX(50%);
 }
+agm-map {
+  height: 300px;
+}

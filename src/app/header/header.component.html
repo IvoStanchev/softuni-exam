@@ -20,15 +20,7 @@
           <a class="nav-link" routerLink="">Home</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            (click)="this.storeService.detailMode = false"
-            routerLink="store"
-            >Store</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="about">About</a>
+          <a class="nav-link" routerLink="store">Store</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="contact">Contact Us</a>
@@ -36,7 +28,12 @@
       </ul>
 
       <ul class="navbar-nav">
-        <li *ngIf="this.storeService.loggedIn == true" class="nav-item ml-auto">
+        <li *ngIf="isAuth" class="nav-item ml-auto">
+          <a style="cursor: pointer" class="nav-link"
+            >Welcome: {{ currentUser.email }}</a
+          >
+        </li>
+        <li *ngIf="isAuth" class="nav-item ml-auto">
           <a (click)="onAdd()" style="cursor: pointer" class="nav-link"
             >Add Product</a
           >
@@ -44,9 +41,7 @@
         <li *ngIf="!isAuth" class="nav-item ml-auto">
           <a routerLink="auth" class="nav-link">Login/SignUp</a>
         </li>
-        <li *ngIf="isAuth" class="nav-item ml-auto">
-          <a style="cursor: pointer" class="nav-link">Profile</a>
-        </li>
+
         <li *ngIf="isAuth" class="nav-item ml-auto">
           <a (click)="onLogout()" style="cursor: pointer" class="nav-link"
             >Logout</a

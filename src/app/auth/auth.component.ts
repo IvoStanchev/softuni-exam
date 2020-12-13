@@ -1,4 +1,3 @@
-import { ViewFlags } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,9 +12,13 @@ import { AuthRecponseData, AuthService } from './auth.service';
 export class AuthComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  // * Vars
+  isLoginMode = false;
+  isLoading = false;
+  error: string = null;
 
   //* Functions
+  ngOnInit(): void {}
 
   // ? Switch the auth mode
   onSwitch() {
@@ -40,7 +43,7 @@ export class AuthComponent implements OnInit {
     let authObs: Observable<AuthRecponseData>;
 
     // ? Depending on the login status on the front end we either sign up or login to an existing account, parts of the error message is handled here as well.
-    if (this.isLoginMode) {
+    if (!this.isLoginMode) {
       authObs = this.authService.login(email, password);
     } else {
       authObs = this.authService.signup(email, password);
@@ -56,16 +59,10 @@ export class AuthComponent implements OnInit {
       (errorMessage) => {
         console.log(errorMessage);
         this.error = errorMessage;
-        // this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
 
     form.reset();
   }
-
-  // * Vars
-  isLoginMode = false;
-  isLoading = false;
-  error: string = null;
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Coffee } from '../../coffee.model';
 import { StoreService } from '../../store.service';
@@ -11,14 +12,22 @@ import { StoreService } from '../../store.service';
 })
 export class StoreItemComponent implements OnInit {
   constructor(
-    public storeService: StoreService,
-    private dataStorageService: DataStorageService
+    private storeService: StoreService,
+    private dataStorageService: DataStorageService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuth = !!user;
+    });
+  }
 
   //* Vars
   id: number;
+  isAuth = false;
+  private userSub: Subscription;
+
   //coffee: Coffee;
 
   // * Bind the coffee and id

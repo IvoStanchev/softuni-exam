@@ -19,27 +19,22 @@
 
     <p class="lead font-weight-bold">{{ coffee.price }}$</p>
 
-    <a *ngIf="!this.storeService.loggedIn" class="btn btn-secondary m-2"
-      >Order now</a
-    >
+    <a *ngIf="!isAuth" class="btn btn-secondary m-2">Order now</a>
     <a
       [routerLink]="[index, 'details']"
-      *ngIf="!this.storeService.loggedIn"
+      *ngIf="!isAuth"
       class="btn btn-dark"
       (click)="onDetails()"
       >Details
     </a>
     <a
       [routerLink]="[index, 'edit']"
-      *ngIf="this.storeService.loggedIn"
+      *ngIf="isAuth"
       class="btn btn-dark m-2"
       (click)="onEdit()"
       >Edit Product
     </a>
-    <a
-      *ngIf="this.storeService.loggedIn"
-      class="btn btn-danger"
-      (click)="onDeleteCoffee()"
+    <a *ngIf="isAuth" class="btn btn-danger" (click)="onDeleteCoffee()"
       >Delete Product</a
     >
   </div>

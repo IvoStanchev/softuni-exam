@@ -10,7 +10,7 @@ import { StoreService } from '../store/store.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
-    public storeService: StoreService,
+    private storeService: StoreService,
     private authService: AuthService
   ) {}
 
@@ -35,4 +35,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   // * Vars
   isAuth = false;
+  currentUser = JSON.parse(localStorage.getItem('userData'));
 }

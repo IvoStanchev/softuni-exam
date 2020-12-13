@@ -1,17 +1,21 @@
 <h1 class="text-center p-2">Login/Register</h1>
 <br />
+
+<!-- ? Error message -->
 <div *ngIf="error" class="alert alert-danger">
   <p class="text-center">{{ error }}</p>
 </div>
+
+<!-- ? Loading spinner -->
 <div *ngIf="isLoading" style="text-align: center">
   <app-loading-spinner></app-loading-spinner>
 </div>
+
+<!-- ? Login form  -->
 <form *ngIf="!isLoading" #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
-  <!-- [formGroup]="coffeeForm"  -->
   <div class="row text-center">
     <div class="col-sm-12">
       <!-- ? Email -->
-
       <div class="form-group center">
         <label for="email">Email</label>
         <input
@@ -24,6 +28,7 @@
           email
         />
       </div>
+
       <!--  ? Password -->
       <div class="form-group center">
         <label for="password">Password</label>
@@ -39,20 +44,21 @@
       </div>
 
       <!-- ? Buttons -->
-
       <button
         type="submit"
         class="btn btn-dark m-2"
         [disabled]="!authForm.valid"
       >
-        {{ isLoginMode ? "Login" : "Sign Up" }}
+        {{ !isLoginMode ? "Login" : "Sign Up" }}
       </button>
       |
       <button (click)="onSwitch()" type="button" class="btn btn-dark m-2">
-        Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+        Switch to {{ !isLoginMode ? "Sign Up" : "Login" }}
       </button>
       |
-      <button type="button" class="btn btn-danger m-2">Cancel</button>
+      <button type="button" class="btn btn-danger m-2" routerLink="">
+        Cancel
+      </button>
     </div>
   </div>
 </form>

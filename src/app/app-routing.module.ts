@@ -18,11 +18,6 @@ const routes: Routes = [
       import('./contact/contact.module').then((m) => m.ContactModule),
   },
   {
-    path: 'about',
-    loadChildren: () =>
-      import('./about/about-router.module').then((m) => m.AboutRouterModule),
-  },
-  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },

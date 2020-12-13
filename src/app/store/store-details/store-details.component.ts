@@ -19,6 +19,7 @@ export class StoreDetailsComponent implements OnInit {
       this.id = params['id'];
 
       this.coffee = this.storeService.singleCoffee(this.id);
+      console.log(this.coffee);
     });
   }
 

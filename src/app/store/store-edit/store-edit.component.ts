@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
@@ -66,8 +66,10 @@ export class StoreEditComponent implements OnInit {
   onSubmit() {
     this.storeService.updateCoffee(this.id, this.editCoffeForm.value);
     this.dataStorageService.storeCoffee();
+    this.dataStorageService.fetchCoffee().subscribe((res) => {
+      this.ngOnInit();
+    });
     this.storeService.editMode = false;
-    this.ngOnInit();
     this.onCancel();
   }
 

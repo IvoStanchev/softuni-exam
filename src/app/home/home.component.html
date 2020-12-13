@@ -15,7 +15,7 @@
       <div class="carousel-caption d-none d-block">
         <h1 class="display-2">Coffee</h1>
         <h3 class="display-6">
-          We understand coffee, therefore we have the best selection possible.
+          We understand coffee. Our selection is one of the finest.
         </h3>
         <button type="submit" routerLink="store" class="btn btn-dark btn-lg">
           Visit Store
@@ -28,11 +28,21 @@
         alt="Responsive image"
         class="img-fluid vw-100"
       />
-      <div class="carousel-caption d-none d-block">
+      <div *ngIf="!isAuth" class="carousel-caption d-none d-block">
         <h1 class="display-2">Register</h1>
-        <h3 class="display-6">Join our family, sell your coffe.</h3>
-        <button type="button" class="btn btn-dark btn-lg">
+        <h3 class="display-6">
+          Join our family and add your favourite coffee as a product on our
+          store.
+        </h3>
+        <button type="button" routerLink="auth" class="btn btn-dark btn-lg">
           Create Account
+        </button>
+      </div>
+      <div *ngIf="isAuth" class="carousel-caption d-none d-block">
+        <h1 class="display-2">Welcome to our shop!</h1>
+        <h3 class="display-6">Got the store and add your favourite coffee.</h3>
+        <button type="button" routerLink="store" class="btn btn-dark btn-lg">
+          Store
         </button>
       </div>
     </div>
@@ -93,7 +103,7 @@
 <div class="container padding">
   <div class="row welcome text-center">
     <div class="col-12">
-      <h1 class="display-4">Choose the freshest</h1>
+      <h1 class="display-4">Choose your flavor.</h1>
       <hr />
     </div>
   </div>
@@ -146,7 +156,7 @@
         If you are uncertain, we provide free tasting samples for all of our
         customers.
       </p>
-      <a class="btn btn-outline-dark" routerLink="about">Learn More</a>
+      <a class="btn btn-outline-dark" routerLink="Contact Us">Learn More</a>
     </div>
 
     <div id="image" class="col-lg-6">
