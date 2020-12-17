@@ -63,10 +63,6 @@
   <h1 class="display-4">Visit our store</h1>
 </div>
 
-<h1>{{ title }}</h1>
-
-<!-- this creates a google map on the page with the given lat/lng from -->
-<!-- the component as the initial center of the map: -->
 <agm-map [latitude]="lat" [longitude]="lng">
   <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 </agm-map>
