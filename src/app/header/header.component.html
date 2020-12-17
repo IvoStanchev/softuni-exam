@@ -35,9 +35,7 @@
       <!-- ? Auth dependend links -->
       <ul class="navbar-nav">
         <li *ngIf="isAuth" class="nav-item ml-auto">
-          <a style="cursor: pointer" class="nav-link"
-            >Welcome: {{ currentUser.email }}</a
-          >
+          <a class="nav-link">Welcome: </a>
         </li>
         <li *ngIf="isAuth" class="nav-item ml-auto">
           <a (click)="onAdd()" style="cursor: pointer" class="nav-link"

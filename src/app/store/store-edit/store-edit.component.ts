@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
@@ -23,6 +23,7 @@ export class StoreEditComponent implements OnInit {
   isSubmitted = false;
   editMode = false;
   id: number;
+  notAllowed = false;
 
   // ? Prep form before use
   private InitForm() {

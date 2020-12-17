@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { __awaiter } from 'tslib';
 import { AuthService } from '../auth/auth.service';
 import { StoreService } from '../store/store.service';
 

@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Coffee } from '../coffee.model';
 import { StoreService } from '../store.service';

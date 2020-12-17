@@ -9,6 +9,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ContactComponent implements OnInit {
   constructor() {}
 
+  title = 'My first AGM project';
+  lat = 51.678418;
+  lng = 7.809007;
+
   //? Form
   contactForm: FormGroup;
   isSubmitted = false;
@@ -34,7 +38,4 @@ export class ContactComponent implements OnInit {
       message: new FormControl(null, Validators.required),
     });
   }
-
-  lat = 42.14462;
-  lng = 24.749485;
 }

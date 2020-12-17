@@ -18,6 +18,11 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
     private authService: AuthService
   ) {}
 
+  //* Vars
+  coffee: Coffee[];
+  private userSub: Subscription;
+  isAuth = false;
+
   ngOnInit(): void {
     this.dataStorageService.fetchCoffee().subscribe();
     this.userSub = this.authService.user.subscribe((user) => {
@@ -28,11 +33,6 @@ export class HomeComponent implements OnInit, OnChanges, OnDestroy {
   ngDoCheck(): void {
     this.coffee = this.storeService.getCoffee().slice(0, 3);
   }
-
-  //* Vars
-  coffee: Coffee[];
-  private userSub: Subscription;
-  isAuth = false;
 
   // * Functions
   toStore() {
