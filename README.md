@@ -2,13 +2,21 @@
 
 # Coffee shop description
 
-Hi, this is a very simple web application/store designed to sell coffee products. It uses the following technologies:
+Hi, this is a very simple web application/store designed to sell coffee products. It contains a Home page with product introduction, store page, product details page, add product page and a contact us page with Google maps.
+
+Google Firebase authentication is supported via Email/Password and logged in users have access to the edit page for each product.
+
+All information is stored in Google Firebase.
+
+# Technologies used.
 
 Frontend:
 
 - Angular 10
 - Bootstrap 4.5
 - CSS
+- jQuery
+- Popper.js
 
 Backend:
 
@@ -16,24 +24,6 @@ Backend:
 
 ## Additional information.
 
+This app is deployed to Firebase and can be accesed with the following URL: `https://softuni-exam-3cc55.web.app`
+
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

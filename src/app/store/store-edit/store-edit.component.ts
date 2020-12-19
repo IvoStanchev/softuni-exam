@@ -70,7 +70,7 @@ export class StoreEditComponent implements OnInit {
     this.dataStorageService.fetchCoffee().subscribe((res) => {
       this.ngOnInit();
     });
-    this.storeService.editMode = false;
+    this.storeService.mode = false;
     this.onCancel();
   }
 

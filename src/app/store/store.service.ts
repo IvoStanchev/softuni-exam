@@ -10,8 +10,9 @@ export class StoreService {
   // * Vars
   addProductMode = false;
   loggedIn = false;
-  detailMode = false;
-  editMode = false;
+  mode = false;
+  // detailMode = false;
+  // editMode = false;
   private coffee: Coffee[] = [];
 
   // * Fetch the current coffee stock
@@ -56,8 +57,7 @@ export class StoreService {
   // ? redirect to store.
   toStore() {
     this.router.navigate(['store'], { relativeTo: this.route });
-    this.detailMode = false;
     this.addProductMode = false;
-    this.editMode = false;
+    this.mode = false;
   }
 }

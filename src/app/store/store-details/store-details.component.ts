@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Coffee } from '../coffee.model';
 import { StoreService } from '../store.service';
@@ -17,9 +17,7 @@ export class StoreDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-
       this.coffee = this.storeService.singleCoffee(this.id);
-      console.log(this.coffee);
     });
   }
 

@@ -1,29 +1,14 @@
 <div *ngIf="!this.storeService.addProductMode" class="cards container padding">
   <!-- ? Load the product page -->
-  <div
-    *ngIf="
-      this.storeService.detailMode == false &&
-      this.storeService.editMode == false
-    "
-  >
+  <div *ngIf="this.storeService.mode == false">
     <h1 class="text-center">Our Products</h1>
     <hr />
     <app-store-list class="row padding"></app-store-list>
   </div>
+</div>
 
-  <!-- ? Load the product details -->
-  <div *ngIf="this.storeService.detailMode == true">
-    <h1 class="text-center">Product Details</h1>
-    <hr />
-    <router-outlet class="row padding"></router-outlet>
-  </div>
-
-  <!-- ? Load the edit page -->
-  <div *ngIf="this.storeService.editMode == true">
-    <h1 class="text-center">Edit Product</h1>
-    <hr />
-    <router-outlet class="row padding"></router-outlet>
-  </div>
+<div *ngIf="this.storeService.mode == true">
+  <router-outlet class="row padding"></router-outlet>
 </div>
 
 <div *ngIf="this.storeService.addProductMode" class="text-center container">
@@ -33,7 +18,14 @@
     <!-- ? Buttons -->
     <div class="row">
       <div class="col-sm-12">
-        <button type="submit" class="btn btn-dark m-2">Save</button> |
+        <button
+          type="submit"
+          [disabled]="!coffeeForm.valid"
+          class="btn btn-dark m-2"
+        >
+          Save
+        </button>
+        |
         <button (click)="onCancel()" type="button" class="btn btn-danger m-2">
           Cancel
         </button>
@@ -47,6 +39,7 @@
             id="name"
             class="form-control"
             formControlName="name"
+            required
           />
         </div>
 
@@ -60,6 +53,7 @@
             id="description"
             class="form-control"
             rows="3"
+            required
           ></textarea>
         </div>
 
@@ -73,6 +67,7 @@
             class="form-control"
             formControlName="imagePath"
             #imagePath
+            required
           />
         </div>
 
@@ -88,6 +83,7 @@
                   class="form-control"
                   formControlName="weight"
                   id="weight"
+                  required
                 />
               </div>
               <div class="col-sm-4">
@@ -98,6 +94,7 @@
                   class="form-control"
                   formControlName="price"
                   id="price"
+                  required
                 />
               </div>
               <div class="col-sm-4">
@@ -108,6 +105,7 @@
                   class="form-control"
                   name="roast"
                   id="roast"
+                  required
                 >
                   <option selected>Choose...</option>
                   <option>Dark Roast</option>
@@ -137,5 +135,10 @@
         </div>
       </div>
     </div>
+    <span *ngIf="!coffeeForm.valid && coffeeForm.touched" class="lead">
+      <hr />
+      Please fill the entire form!</span
+    >
+    <hr />
   </form>
 </div>

@@ -41,11 +41,11 @@ export class StoreItemComponent implements OnInit, OnDestroy {
 
   // ? Load the details page
   onDetails() {
-    this.storeService.detailMode = true;
+    this.storeService.mode = true;
   }
   // ? Load the edit page
   onEdit() {
-    this.storeService.editMode = true;
+    this.storeService.mode = true;
   }
 
   ngOnDestroy() {

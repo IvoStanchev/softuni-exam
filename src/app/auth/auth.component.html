@@ -24,9 +24,14 @@
           id="email"
           class="form-control"
           ngModel
+          #email="ngModel"
           required
           email
         />
+        <!-- * Notify invalid mail -->
+        <span *ngIf="!email.valid && email.touched" class="lead"
+          >Please enter a valid email !</span
+        >
       </div>
 
       <!--  ? Password -->
@@ -40,7 +45,12 @@
           ngModel
           required
           minlength="6"
+          #password="ngModel"
         />
+        <!-- Passs notify! -->
+        <span *ngIf="!password.valid && password.touched" class="lead"
+          >All fields are required, please enter a password !</span
+        >
       </div>
 
       <!-- ? Buttons -->

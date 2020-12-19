@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -11,7 +11,7 @@ import { StoreService } from './store.service';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css'],
 })
-export class StoreComponent implements OnInit, OnDestroy, OnChanges {
+export class StoreComponent implements OnInit, OnDestroy {
   // * Vars
   private userSub: Subscription;
   isAuth = false;
@@ -27,9 +27,6 @@ export class StoreComponent implements OnInit, OnDestroy, OnChanges {
   ) {}
 
   // * Functions
-  ngOnChanges() {
-    this.dataStorageService.fetchCoffee().subscribe();
-  }
 
   ngOnInit(): void {
     this.userSub = this.authService.user.subscribe((user) => {
@@ -56,6 +53,10 @@ export class StoreComponent implements OnInit, OnDestroy, OnChanges {
     this.dataStorageService.storeCoffee();
     this.storeService.addProductMode = false;
     this.coffeeForm.reset();
+    this.dataStorageService.fetchCoffee().subscribe((i) => {
+      this.ngOnInit();
+    });
+
     this.onCancel();
   }
 
