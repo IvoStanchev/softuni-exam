@@ -18,7 +18,9 @@
 
     <p class="lead font-weight-bold">{{ coffee.price }}$</p>
 
-    <a *ngIf="!isAuth" class="btn btn-secondary m-2">Order now</a>
+    <a *ngIf="!isAuth" (click)="onOrder()" class="btn btn-secondary m-2"
+      >Order now</a
+    >
     <a
       [routerLink]="[index, 'details']"
       *ngIf="!isAuth"

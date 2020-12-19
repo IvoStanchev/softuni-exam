@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Coffee } from '../coffee.model';
 import { StoreService } from '../store.service';
 
@@ -11,7 +12,8 @@ import { StoreService } from '../store.service';
 export class StoreDetailsComponent implements OnInit {
   constructor(
     private storeService: StoreService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataStorageService: DataStorageService
   ) {}
 
   ngOnInit(): void {
@@ -28,5 +30,9 @@ export class StoreDetailsComponent implements OnInit {
   // * Functions
   toStore() {
     this.storeService.toStore();
+  }
+
+  onOrder() {
+    alert(`Order placed`);
   }
 }

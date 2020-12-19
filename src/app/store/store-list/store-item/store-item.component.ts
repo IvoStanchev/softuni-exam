@@ -51,4 +51,8 @@ export class StoreItemComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.userSub.unsubscribe();
   }
+
+  onOrder() {
+    alert(`Order placed`);
+  }
 }

@@ -2,25 +2,27 @@
 
 # Coffee shop description
 
-Hi, this is a very simple web application/store designed to sell coffee products. It contains a Home page with product introduction, store page, product details page, add product page and a contact us page with Google maps.
+Hi, this is a very simple web application/store designed to sell coffee products. It contains a Home page with product introduction, Store page, Product details page, Add product page and a Contact us page.
 
-Google Firebase authentication is supported via Email/Password and logged in users have access to the edit page for each product.
+Google Firebase authentication is supported via Email/Password and logged in users have access to the Edit page for each product.
 
-All information is stored in Google Firebase.
+All information is stored on Google's Firebase.
 
 # Technologies used.
 
 Frontend:
 
-- Angular 10
+- Angular 11
 - Bootstrap 4.5
 - CSS
 - jQuery
 - Popper.js
+- Google Maps
 
 Backend:
 
-- Google Firebase with Authentication.
+- Firebase Realtime Database
+- Firebase Authentication
 
 ## Additional information.
 
