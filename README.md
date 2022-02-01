@@ -24,6 +24,10 @@ Backend:
 - Firebase Realtime Database
 - Firebase Authentication
 
+Bug:
+
+ - The "Add product" page only works when you access the store.
+
 ## Additional information.
 
 This app is deployed to Firebase and can be accesed with the following URL: `https://softuni-exam-3cc55.web.app`
